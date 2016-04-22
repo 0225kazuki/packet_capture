@@ -1,4 +1,4 @@
-#include <pcap.h>
+#include "pcap.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@
 #include <net/ethernet.h>
 //#include "if_ether.h"
 
-
+  
 
 /* イーサネットアドレス（MACアドレス）は6バイト*/
 #define ETHER_ADDR_LEN	6
@@ -61,7 +61,7 @@ print_arp(char *p)
   printf("arp_plen = 0x%x\n", ntohs(arp->plen) );
   printf("arp_op = %d\n", ntohs(arp->op));
   printf("arp_source = %s\n", convmac_tostr(arp->source_mac,mac,sizeof(mac) ));
-  //printf("arp_source_ip = %s\n", inet_ntoa(arp->source_ip));
+  printf("arp_source_ip = ");
   for(i=0; i<4;i++) printf("%d.", arp->source_ip[i]);
   printf("\narp_tell_mac = %s\n", convmac_tostr(arp->tell_mac,mac,sizeof(mac) ));
   printf("arp_tell_ip = %s\n", inet_ntoa(arp->tell_ip));
